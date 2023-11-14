@@ -31,8 +31,8 @@ async function fetchTransferRange(startBlock: number, endBlock: number, tokenCon
     logger.info('Fetch transfers from tron completed');
 }
 
-export function startTransferTask() {
+export function startTransferTask(first: number, last: number) {
     logger.info('Start fetch transfers from tron');
-    fetchTransferRange(20000, 30000, ['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']);
+    fetchTransferRange(first, last, ['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']);
 }
 
