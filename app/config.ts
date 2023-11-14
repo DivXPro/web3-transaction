@@ -16,6 +16,9 @@ export interface EnvConfig {
             apiKey: string
         }
     }
+    log: {
+        categories: string
+    }
 }
 
 export function getConfig(): EnvConfig {
@@ -34,6 +37,9 @@ export function getConfig(): EnvConfig {
                 fullNode: process.env.NETWORK_TRON_NODE,
                 apiKey: process.env.NETWORK_TRON_APIKEY
             }
+        },
+        log: {
+            categories: process.env.LOG_CATEGORIES || 'default'
         }
     }
 }

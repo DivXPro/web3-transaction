@@ -3,7 +3,7 @@ import {Account, Transfer} from '../services/transfer';
 import { getConfig } from '../config';
 
 const option: ClientOption = getConfig().nebulaGraph;
-console.log('option', option)
+
 export const graphClient = createClient(option);
 
 export function addTransfer(transfer: Transfer) {
