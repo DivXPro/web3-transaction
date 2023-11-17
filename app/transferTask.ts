@@ -25,14 +25,20 @@ async function fetchTransferFromBlock(block: number, tokenContracts: string[]) {
 }
 
 async function fetchTransferRange(startBlock: number, endBlock: number, tokenContracts: string[]) {
-    for (let block = startBlock; block <= endBlock; block ++) {
-        await fetchTransferFromBlock(block, tokenContracts);
+    if (startBlock <= endBlock) {
+        for (let block = startBlock; block <= endBlock; block ++) {
+            await fetchTransferFromBlock(block, tokenContracts);
+        }
+    } else {
+        for (let block = startBlock; block >= endBlock; block --) {
+            await fetchTransferFromBlock(block, tokenContracts);
+        }
     }
     logger.info('Fetch transfers from tron completed');
 }
 
 export function startTransferTask(first: number, last: number) {
-    logger.info('Start fetch transfers from tron');
+    logger.info(`Start fetch transfers from block ${first} to ${last}`);
     fetchTransferRange(first, last, ['TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t']);
 }
 
