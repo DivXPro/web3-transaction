@@ -39,7 +39,6 @@ export class TronServer {
 
   isTransfer(transactionInfo: TransactionInfo) {
     const func = '0x' + transactionInfo.log?.[0]?.topics?.[0];
-    // console.log('func', func, keccak256(toUtf8Bytes('Transfer(address,address,uint256)')));
     return (func === keccak256(toUtf8Bytes('Transfer(address,address,uint256)')));
   }
 
