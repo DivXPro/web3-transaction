@@ -5,7 +5,6 @@ import {errorLogger, logger} from './log/logger';
 
 let count = 0;
 async function fetchTransferFromBlock(block: number, tokenContracts: string[]) {
-    console.log('fetchTransferFromBlock')
     const tronServer = new TronServer(tronWeb);
     try {
         const transfers = await tronServer.getTransferFromBlock(block, tokenContracts);
@@ -25,7 +24,7 @@ async function fetchTransferFromBlock(block: number, tokenContracts: string[]) {
         count += transfers.length;
         logger.info(`${transfers.length} transfers at block #${block}, total ${count} got`);
     } catch (error) {
-        errorLogger.info(block);
+        errorLogger.info(error);
     }
 }
 
