@@ -9,6 +9,7 @@ export interface Transfer {
   to: string
   amount: string
   transferTime: number
+  block: number
   result: string
 }
 

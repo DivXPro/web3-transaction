@@ -43,7 +43,7 @@ export class TronServer {
   }
 
 
-  async getTransferFromBlock(block: number | string, tokenContracts?: string[]) {
+  async getTransferFromBlock(block: number, tokenContracts?: string[]) {
     const transactions = await this.getTransactionFromBlock(block);
     const transfers: Transfer[] = []
     for (const tx of transactions) {
@@ -57,6 +57,7 @@ export class TronServer {
             contract: tronWeb.address.fromHex(txInfo.contract_address),
             ...event,
             transferTime: Math.floor(tx.raw_data.expiration / 1000),
+            block,
             result: txInfo.receipt.result
           })
         }

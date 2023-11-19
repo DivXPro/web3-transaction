@@ -7,7 +7,7 @@ const option: ClientOption = getConfig().nebulaGraph;
 export const graphClient = createClient(option);
 
 export function addTransfer(transfer: Transfer) {
-  const nGQL = `INSERT EDGE transfer (txID, network, contract, \`from\`, \`to\`, amount, transferTime, result) VALUES "${transfer.from}"->"${transfer.to}": ("${transfer.txID}", "${transfer.network}", "${transfer.contract}", "${transfer.from}", "${transfer.to}", ${transfer.amount}, ${transfer.transferTime}, "${transfer.result}")`;
+  const nGQL = `INSERT EDGE transfer (txID, network, token, \`from\`, \`to\`, amount, transferTime, block, result) VALUES "${transfer.from}"->"${transfer.to}": ("${transfer.txID}", "${transfer.network}", "${transfer.contract}", "${transfer.from}", "${transfer.to}", ${transfer.amount}, ${transfer.transferTime}, ${transfer.block}, "${transfer.result}")`;
   return graphClient.execute(nGQL);
 }
 
